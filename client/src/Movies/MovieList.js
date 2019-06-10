@@ -1,6 +1,17 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import styled from 'styled-components';
+
+
+const StyledLink = styled(Link)`
+    text-decoration: none;
+    color: black;
+
+    &:focus, &:hover, &:visited, &:link, &:active {
+        text-decoration: none;
+    }
+`
 
 export default class MovieList extends Component {
   constructor(props) {
@@ -35,7 +46,7 @@ export default class MovieList extends Component {
 function MovieDetails({ movie }) {
   const { title, director, metascore, stars } = movie;
   return (
-    <Link to={`/movies/${movie.id}`}>
+    <StyledLink to={`/movies/${movie.id}`}>
       <div className="movie-card">
         <h2>{title}</h2>
         <div className="movie-director">
@@ -52,6 +63,6 @@ function MovieDetails({ movie }) {
           </div>
         ))}
       </div>
-    </Link>
+    </StyledLink>
   );
 }
